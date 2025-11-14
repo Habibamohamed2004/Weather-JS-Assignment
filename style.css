@@ -1,0 +1,359 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --main-dark: #272a32;
+  --footer-dark: #20222a; 
+  --text-light: #ffffff;
+  --text-muted: #b9b9b9;
+  --accent-blue: #009ad8;
+}
+
+body {
+  background: var(--main-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+}
+
+/* --- Utility Container --- */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3; 
+}
+
+
+/* --- Header & Navigation (No Change) --- */
+.header {
+  background-color: var(--main-dark);
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* --- UPDATED: New styles for the image logo --- */
+.logo img {
+  /* Set margin to match the spacing previously provided by the icon */
+  margin-right: 10px; 
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.header nav li {
+  margin-left: 20px;
+}
+
+.header nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 5px 15px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  transition: all 0.3s;
+  font-weight: 300;
+}
+
+.header nav a.active,
+.header nav a:hover {
+  border-color: var(--accent-blue);
+  background-color: var(--accent-blue);
+  color: var(--text-light);
+}
+
+.main-content {
+  background-image: url('banner.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  position: relative;
+  z-index: 1; 
+}
+
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 2;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--main-dark);
+  padding: 15px 15px 15px 30px;
+  border-radius: 40px;
+  margin-bottom: 50px;
+}
+
+.search-bar i {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.search-bar input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-bar button {
+  padding: 15px 40px;
+  border: none;
+  background-color: var(--accent-blue);
+  color: var(--text-light);
+  font-weight: 300;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+.search-bar button:hover {
+  background-color: #0077b3;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #272a32; 
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.card {
+  padding: 30px 20px;
+  text-align: center;
+  background-color: var(--main-dark);
+  background-color: rgba(0, 0, 0, 0.1); 
+  border-right: 1px solid #1e2025; 
+  height: 100%;
+}
+
+.card:first-child {
+  padding: 0; 
+  background-color: var(--main-dark); 
+  border-right: 1px solid #1e2025;
+}
+
+.card:last-child {
+  border-right: none;
+}
+
+/* Styling for the large Today's card (first card) */
+.card-today {
+  padding: 30px 20px;
+  height: 400px;
+}
+
+.card-header {
+  background-color: #1e2025;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.card-header span {
+  font-weight: 300;
+}
+
+.location {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 0 20px;
+}
+
+.today-temp-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 20px;
+}
+
+.today-temp {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.today-icon {
+  width: 90px;
+  height: 90px;
+}
+
+.today-text {
+  text-align: left;
+  padding: 0 20px;
+  font-size: 16px;
+  color: var(--accent-blue);
+  margin-top: 10px;
+}
+
+.extra-info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px 20px 30px;
+  color: var(--text-muted);
+}
+
+.extra-info span {
+  font-size: 14px;
+}
+
+.extra-info i {
+  margin-right: 5px;
+}
+
+/* Styling for the next two cards (Forecast) */
+.forecast-card {
+  background-color: #2e3137;
+}
+
+.forecast-card .card-header {
+  background-color: #1e2025;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 10px 20px;
+}
+
+.forecast-icon {
+  width: 60px;
+  margin: 20px 0;
+}
+
+.forecast-max-temp {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.forecast-min-temp {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.forecast-condition {
+  font-size: 14px;
+  color: var(--accent-blue);
+  margin-top: 10px;
+}
+
+/* --- New Footer Styles --- */
+.site-footer {
+    background-color: var(--footer-dark);
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.subscription-box {
+    display: flex;
+    width: 400px;
+    background-color: var(--main-dark);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.subscribe-input {
+    flex-grow: 1;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.subscribe-input::placeholder {
+    color: var(--text-muted);
+}
+
+.subscribe-button {
+    padding: 10px 30px;
+    border: none;
+    background-color: var(--accent-blue);
+    color: var(--text-light);
+    font-weight: 300;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+}
+
+.subscribe-button:hover {
+    background-color: #0077b3;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--main-dark);
+    color: var(--accent-blue);
+    border-radius: 50%;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent-blue);
+    color: var(--text-light);
+}
+
+.copyright {
+    color: var(--text-muted);
+    font-size: 13px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
